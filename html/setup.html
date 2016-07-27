@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LSG API Caller Setup</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/app.css">
+<style>
+li { 
+font-size: 14pt;
+}
+</style>
+
+</head>
+	<body>
+		<h2>Setup - How To</h2>
+		<ol>
+			<li>For SS, to run locally against your local websphere, be sure to change the XCRSF filter to run locally as shown below:</li>
+				<img src="/img/SS_web_xml.png"/>
+			
+			<li>To add a new form/controller rest caller do the following</li>
+				<ul>
+					<li>Open /js/[appName]Controllers.js, example SS = ssControllers.js </li>
+					<li>Copy one of the existing controller methods and change to meet the needs of the endpoint you are trying to test</li>
+					<li>Create a corresponding html template page in templates/[APP_NAME]/[controller_endpoint_name].html  </li>
+					<li>Open /js/app.js, copy one of the existing "when" clauses and change to match the endpoint and html page you just created.</li>
+					<li>Open index.html and change or add your endpoint under the appropriate menu system.</li>
+					<li>Please keep with the naming convention that is currently in use throughout the app. It is easy to catch on to and shouldn't be difficult to figure out.</li>
+				</ul>
+		</ol>
+	
+	</body>
+	
+</html>

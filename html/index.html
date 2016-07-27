@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html ng-app="lsgApp">
+<head>
+<title>LSG API Caller</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/app.css">
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+        	<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li> <a href="setup.html">Set up/How to</a> </li>
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Self Service <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li role="presentation" class="disabled"><a href="">Self Service</a></li>
+							<li><a href="#/ssDemoteAccount">Demote Account</a></li>
+							<li><a href="#/ssGetPreferences">Get Preferences</a></li>
+							<li><a href="#/ssGetRoles">Get Roles</a></li>
+							<li><a href="#/ssGetTextKeys">Get Text Keys</a></li>
+							<li><a href="#/ssInitGateway">Init Gateway</a></li>
+							<li><a href="#/ssSearch">Search (incomplete)</a></li>
+							<li><a href="#/ssAutocomplete">AutoComplete</a></li>
+							<li><a href="#/ssGetServicesDataTables">Get Services DataTables</a></li>
+							<li><a href="#/ssUpdateProfile">Update Profile</a></li>
+							<li><a href="#/ssGetProfile">Get Profile</a></li>
+							<li><a href="#/unimplemented">Get New Profile (unimplemented)</a></li>
+							<li><a href="#/ssAddNewUser">Add New User</a></li>
+							<li><a href="#/unimplemented">Get Requests (unimplemented)</a></li>
+							<li><a href="#/ssProcessRequests">Process Requests</a></li>
+							<li><a href="#/unimplemented">Get Services (unimplemented)</a></li>
+							<li><a href="#/ssGetServiceDetails">Get Service Details</a></li>
+							<li><a href="#/unimplemented">Get Service Status (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Add User Access (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Revoke User Access (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Service Form (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Request Access (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Request Details (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Cancel Request (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Users (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Service Children (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Services Children DataTables (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Users DataTables (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Direct Reports DataTables (unimplemented)</a></li>
+							<li><a href="#/ssGetRequestsDataTables">Get Requests DataTables</a></li>
+							<li><a href="#/unimplemented">Get User Details (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Dependent Data (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Submit AdHoc Sod Request (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Unauthenticated</a></li>
+							<li><a href="#/unimplemented">Check Username (unimplemented)</a></li>
+							<li><a href="#/ssUnauthInitSelfRegistration">Unauth Init Self Registration</a></li>
+							<li><a href="#/ssUnauthSubmitRegistration">Unauth Submit Registration</a></li>
+							<li><a href="#/ssUnauthInitPasswordReset">Init Password Reset</a></li>
+							<li><a href="#/unimplemented">Get Verification (unimplemented)</a></li>
+							<li><a href="#/ssUnauthUpdatePassword">Update/Reset Password</a></li>
+							<li><a href="#/unimplemented">Init Password Reset Email Validation (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Init Self Registration Validation (unimplemented)</a></li>
+							<li><a href="#/ssUnauthResetPasswordValidation">Reset Password Validation</a></li>
+							<li><a href="#/unimplemented">Submit Registration Validation (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Init Username Recovery (unimplemented)</a></li>
+							<li><a href="#/ssUnauthGetUsername">Get Username/Recover Username</a></li>
+							<li><a href="#/unimplemented">Flush Self Service Cache (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Directory Lookup DataTables (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Init Directory Lookup (unimplemented)</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gma <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li role="presentation" class="disabled"><a href="">Gma Auth</a></li>
+							<li><a href="#/gmaGmaAuthGetToken">Get Token</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Junction Mgmt <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li role="presentation" class="disabled"><a href="">Web Applications</a></li>
+							<li><a href="#/gawJunctionMgmtGetAllWebApps">Get All Web Applications(Datatables)</a></li>
+							<li><a href="#/gawJunctionMgmtGetWebApp">Get Web Application</a></li>
+							<li><a href="#/gawJunctionMgmtCreateWebApplication">Create Web Application</a></li>
+							<li><a href="#/gawJunctionMgmtUpdateWebApplication">Update Web Application</a></li>
+							<li role="presentation" class="disabled"><a href="">Protected Object Policies</a></li>
+							<li><a href="#/gawJunctionMgmtGetProtectedObjectPoliciesList">List Protected Object Policies</a></li>
+							<li><a href="#/gawJunctionMgmtGetProtectedObjectPolicy">Get Protected Object Policy</a></li>
+							<li><a href="#/gawJunctionMgmtCreateProtectedObjectPolicy">Create Protected Object Policy</a></li>
+							<li><a href="#/gawJunctionMgmtUpdateProtectedObjectPolicy">Update Protected Object Policy</a></li>
+							<li><a href="#/gawJunctionMgmtDeleteProtectedObjectPolicy">Delete Protected Object Policy</a></li>
+							<li role="presentation" class="disabled"><a href="">ACL's</a></li>
+							<li><a href="#/gawJunctionMgmtGetACLList">List Access Control Lists</a></li>
+							<li><a href="#/gawJunctionMgmtGetACL">Get Access Control List</a></li>
+							<li><a href="#/gawJunctionMgmtCreateACL">Create Access Control List</a></li>
+							<li><a href="#/gawJunctionMgmtUpdateACL">Update Access Control List</a></li>
+							<li><a href="#/gawJunctionMgmtDeleteACL">Delete Access Control List</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">GmaApi <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li role="presentation" class="disabled"><a href="">Clients</a></li>
+							<li><a href="#/unimplemented">Create Client (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Federation Attributes</a></li>
+							<li><a href="#/gawAttributesListAttributes">List Attributes</a></li>
+							<li><a href="#/gawAttributesCreateAttribute">Create Attribute</a></li>
+							<li><a href="#/gawAttributesRemoveAttribute">Remove Attribute</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Federation Keys</a></li>
+							<li><a href="#/gawKeysGetPersonalCert">Get Personal Cert</a></li>
+							<li><a href="#/gawKeysExportPersonalCert">Export Personal Cert</a></li>
+							<li><a href="#/gawKeysListPersonalCerts">List Personal Certs</a></li>
+							<li><a href="#/gawKeysCreatePersonalCert">Create Personal Cert</a></li>
+							<li><a href="#/gawKeysUpdatePersonalCert">Update Personal Cert</a></li>
+							<li><a href="#/gawKeysReplacePersonalCert">Replace Personal Cert</a></li>
+							<li><a href="#/gawKeysRemovePersonalCert">Remove Personal Cert</a></li>
+							<li><a href="#/gawKeysSearchPersonalCert">Search Person Cert</a></li>
+							<li><a href="#/gawKeysListSignerCerts">List Signer Certs</a></li>
+							<li><a href="#/gawKeysCreateSignerCert">Create Signer Cert</a></li>
+							<li><a href="#/gawKeysRemoveSignerCert">Remove Signer Cert</a></li>
+							<li><a href="#/gawKeysSearchSignerCert">Search Signer Cert</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Federation Connections</a></li>
+							<li><a href="#/gawConnectionsGetConnection">Get Connection</a></li>
+							<li><a href="#/gawConnectionsListConnections">List Connections</a></li>
+							<li><a href="#/gawConnectionsCreateConnection">Create Connection</a></li>
+							<li><a href="#/gawConnectionsUpdateConnection">Update Connection (unimplemented)</a></li>
+							<li><a href="#/gawConnectionsRemoveConnection">Remove Connection</a></li>
+							<li><a href="#/gawConnectionsSearch">Search</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Federation Connectors</a></li>
+							<li><a href="#/gawConnectorsListConnectors">List Connectors</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Gma Accounts</a></li>
+							<li><a href="#/gawAddAccount">Add Account</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Gma Groups</a></li>
+							<li><a href="#/unimplemented">Get Groups DataTables (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Group Memebers DataTables (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Add Group (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Edit Group (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Delete Group (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Add User Membership (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Remove User Membership (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Check Group Name (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Gma Services</a></li>
+							<li><a href="#/gawServicesGetDataTables">Get Services Data Tables</a></li>
+							<li><a href="#/unimplemented">Get Service Options (unimplemented)</a></li>
+							<li><a href="#/gawGmaServicesAddService">Add Service</a></li>
+							<li><a href="#/unimplemented">Edit Service (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Delete Service (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Service Members Data Tables (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Add User Membership (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Remove User Membership (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Check Service Name (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Gma UI</a></li>
+							<li><a href="#/unimplemented">Init Gma (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Groups</a></li>
+							<li><a href="#/unimplemented">Get Group Names (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Member UUIDs (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Add Members (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Add Member (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Remove Members (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Remove Member (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Delete Group (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Create Group (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Identities</a></li>
+							<li><a href="#/gawIdentitiesGetUsersDataTables">Get User DataTables</a></li>
+							<li><a href="#/unimplemented">Get User Details (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Edit User (unimplemented)</a></li>
+							<li><a href="#/gawIdentitiesAddUser">Add User</a></li>
+							<li><a href="#/unimplemented">Remove User (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Attribute Elements (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Init Users Setup (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Check Username (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Kba</a></li>
+							<li><a href="#/gawKbaGetKba">Get Kba</a></li>
+							<li><a href="#/unimplemented">Get Active Kba (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Inactive Kba (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Requests</a></li>
+							<li><a href="#/unimplemented">Get Requests DataTables (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Requests Counts (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Process Requests (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Autocomplete (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Reassign Requests (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Send Request Reminder (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Self Service</a></li>
+							<li><a href="#/gawSelfServiceAutocomplete">Autocomplete</a></li>
+							<li><a href="#/gawSelfServiceGetApplicationRole">Get Application Role</a></li>
+							<li><a href="#/gawSelfServiceGetAppTextKeys">Get App Text Keys</a></li>
+							<li><a href="#/gawSelfServiceGetEmailTemplate">Get Email Template</a></li>
+							<li><a href="#/gawSelfServiceGetPasswordReset">Get Password Reset</a></li>
+							<li><a href="#/gawSelfServiceGetPasswordResetOptions">Get Password Reset Options</a></li>
+							<li><a href="#/gawSelfServiceGetPortalOptions">Get Portal Options</a></li>
+							<li><a href="#/gawSelfServiceGetSelfRegistrationOptions">Get Self Registration Options</a></li>
+							<li><a href="#/gawSelfServiceGetUsernameRecoverOptions">Get Username Recovery Options</a></li>
+							<li><a href="#/gawSelfServiceInitAppManagementSetup">Init App Management Setup</a></li>
+							<li><a href="#/gawSelfServiceInitGma">Init Gma</a></li>
+							<li><a href="#/gawSelfServiceUploadBrandingFile">Upload Branding File</a></li>
+							<li><a href="#/unimplemented">Get Kba (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Attibute Elements (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Create New Instance (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Update Self Registration Options (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Update Password Reset Options (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Update Kba (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Update Username Recovery (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Update Portal Options (unimplemented)</a></li>
+							<li><a href="#/gawSelfServiceUpdateEmailTemplate">Update Email Template</a></li>
+							<li><a href="#/unimplemented">Update Application Role (unimplemented)</a></li>
+							<li><a href="#/gawSelfServiceUpdateAttributeElements">Update Attribute Elements</a></li>
+							<li><a href="#/unimplemented">Update App Text Keys (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Update Branding (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Branding (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Upload Branding File IE9 (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Branding Files (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Branding File (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Generate JSON (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Services</a></li>
+							<li><a href="#/gawServicesGetAllServiceNames">Get All Service Names</a></li>
+							<li><a href="#/unimplemented">Get Service (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Member UUIDs (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Child Service Cns (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Parent Service Cn (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Contained Service Cns (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Container Service Cns (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Update Service (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Add Service (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Add Children (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Add Contained Service (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Contained Services (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Add Members (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Remove Child (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Remove Children (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Remove Contained Service (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Remove Contained Services (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Delete Service (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Create Service (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Social</a></li>
+							<li><a href="#/unimplemented">Get All Providers (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Providers For Name (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Providers For App Id (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Put Provider (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Delete (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Status</a></li>
+							<li><a href="#/gawStatusGetStatus">Get Status</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Users</a></li>
+							<li><a href="#/gawUsersGetUser">Get User</a></li>
+							<li><a href="#/unimplemented">Get User Services (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Update User Kba (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get User Kba (unimplemented)</a></li>
+							<li><a href="#/gawKbaCheckAnswer">Check Kba Answer</a></li>
+							<li><a href="#/unimplemented">Delete User Kba (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Search Users (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Update User (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Change User Account Status (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Create User (unimplemented)</a></li>
+							<li><a href="#/gawUserValidatePassword">Validate Password (unimplemented)</a></li>
+							<li><a href="#/unimplemented">ChangePassword (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Delete User (unimplemented)</a></li>
+							<li class="divider"></li>
+							<li role="presentation" class="disabled"><a href="">Verification Token</a></li>
+							<li><a href="#/gawVerificationTokenGetTokenTypes">Get Token Types</a></li>
+							<li><a href="#/unimplemented">Set Token Config (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Create Token (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Token (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Get Token Config (unimplemented)</a></li>
+							<li><a href="#/unimplemented">Delete Token (unimplemented)</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div ng-view></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/ssControllers.js"></script>
+<script src="/js/gmaControllers.js"></script>
+<script src="/js/gmaApiControllers.js"></script>
+<script src="/js/services.js"></script>
+</html>

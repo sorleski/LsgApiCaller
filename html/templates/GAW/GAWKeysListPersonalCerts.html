@@ -1,0 +1,31 @@
+<div ng-controller="GAWKeysListPersonalCertsTestController">
+	<div class="col-md-offset-1">Keys -> List Personal Cert</div>
+	<div>
+		<div class="col-md-offset-1 col-md-10">
+			<div class="row">
+				<div class="col-md-6">
+					<div style="text-decoration: underline;">REQUIRED</div>
+					<div>Client ID <input type="text" ng-model="inputs.client.id"></input></div>
+					<div>Client Secret <input type="text" ng-model="inputs.client.secret"></input></div>
+					<div>Client Abbrev <input type="text" ng-model="inputs.client.abbrev"></input></div>
+					<div>Authorization: {{inputs.authorization}} <button class="btn btn-primary" ng-click="authorize()">Authorize</button> <span ng-class="{green: testing.secsLeft > 0, red: testing.secsLeft == 0}">Time Left: {{testing.secsLeft}} Secs</span></div>
+				</div>
+				<div class="col-md-6">
+					<div style="text-decoration: underline;">OPTIONAL</div>
+				</div>
+			</div>
+			<div><button class="btn btn-primary" ng-click="test()" ng-disabled="testing.secsLeft == 0 || inputs.authorization===null || testing.running">Test</button></div>
+			<div ng-show="testing.running">Running Test....</div>
+			<div ng-show="testing.called && !testing.running">
+				<div>
+					<div>
+						<span ng-show="testing.success" class="green">SUCCESS:</span>
+						<span ng-hide="testing.success" class="red">FAIL:</span>
+						{{testing.time}} ms
+					</div>
+					<pre ng-bind-html="testing.response"></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

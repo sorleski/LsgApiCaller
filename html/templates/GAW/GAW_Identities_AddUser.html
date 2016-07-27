@@ -1,0 +1,39 @@
+<div ng-controller="GAWIdentitiesAddUserTestController">
+	<div class="col-md-offset-1">Identities - Add Service</div>
+	<div>
+		<div class="col-md-offset-1 col-md-10">
+			<div class="row">
+				<div class="col-md-6">
+					<div style="text-decoration: underline;">REQUIRED</div>
+					<div>Client ID <input type="text" ng-model="inputs.client.id"></input></div>
+					<div>Client Secret <input type="text" ng-model="inputs.client.secret"></input></div>
+					<div>Client Abbrev <input type="text" ng-model="inputs.client.abbrev"></input></div>
+					<div>Account: <select ng-model="inputs.account"><option value="true">true</option><option value="false">false</option></select></div>
+					<div>User Status: <select ng-model="inputs.userStatus"><option value="true">active</option><option value="false">inactive</option></select></div>
+					<div>Pwd Status<select ng-model="inputs.pwdStatus"><option value="true">valid</option><option value="false">expired</option></select></div>
+					<div>Surname: <input type="text" ng-model="inputs.surname"></input></div>
+					<div>given name: <input type="text" size="50" ng-model="inputs.givenName"></input></div>
+					<div>uid: <input type="text" size="50" ng-model="inputs.uid"></input></div>
+					<div>password: <input type="text" size="50" ng-model="inputs.pwd"></input></div>
+					<div>roles: <input type="text" size="50" ng-model="inputs.roles"></input></div>
+					<div>Authorization: {{inputs.authorization}} <button class="btn btn-primary" ng-click="authorize()">Authorize</button> <span ng-class="{green: testing.secsLeft > 0, red: testing.secsLeft == 0}">Time Left: {{testing.secsLeft}} Secs</span></div>
+				</div>
+				<div class="col-md-6">
+					<div style="text-decoration: underline;">OPTIONAL</div>
+				</div>
+			</div>
+			<div><button class="btn btn-primary" ng-click="test()" ng-disabled="inputs.authorization===null || testing.running">Test</button></div>
+			<div ng-show="testing.running">Running Test....</div>
+			<div ng-show="testing.called && !testing.running">
+				<div>
+					<div>
+						<span ng-show="testing.success" class="green">SUCCESS:</span>
+						<span ng-hide="testing.success" class="red">FAIL:</span>
+						{{testing.time}} ms
+					</div>
+					<pre ng-bind-html="testing.response"></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

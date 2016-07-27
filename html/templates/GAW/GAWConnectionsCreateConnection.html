@@ -1,0 +1,47 @@
+<div ng-controller="GAWConnectionsCreateConnectionController">
+	<div class="col-md-offset-1">Connections -> Create Connection</div>
+	<div>
+		<div class="col-md-offset-1 col-md-10">
+			<div class="row">
+				<div class="col-md-6">
+					<div style="text-decoration: underline;">REQUIRED</div>
+					<div>Client ID <input type="text" ng-model="inputs.client.id"></input></div>
+					<div>Client Secret <input type="text" ng-model="inputs.client.secret"></input></div>
+					<div>Client Abbrev <input type="text" ng-model="inputs.client.abbrev"></input></div>
+					<div>Connection name <input type="text" ng-model="inputs.connectionForm.name"></input></div>
+					<div>Connection enabled <input type="checkbox" ng-model="inputs.connectionForm.enabled"></input></div>
+					<div>Connector <select ng-model="inputs.connector" ng-options="c as c.name for c in connectors" ng-change="updateConnector()"></select></div>
+					<div>
+						Properties
+						<div ng-repeat="prop in inputs.connector.properties">
+							{{inputs.connectionForm.properties[$index].name}}<input type="text" ng-model="inputs.connectionForm.properties[$index].value">{{prop.defaultValue}}</input>
+						</div>
+					</div>
+					<div>
+						Attributes
+						<div ng-repeat="attr in inputs.connectionForm.attributeMap">
+							{{attr.name}}<select ng-model="inputs.connectionForm.attributeMap[$index].source" ng-options="a.id as a.name for a in attributes"></select>
+						</div>
+					</div>
+
+					<div>Authorization: {{inputs.authorization}} <button class="btn btn-primary" ng-click="authorize()">Authorize</button> <span ng-class="{green: testing.secsLeft > 0, red: testing.secsLeft == 0}">Time Left: {{testing.secsLeft}} Secs</span></div>
+				</div>
+				<div class="col-md-6">
+					<div style="text-decoration: underline;">OPTIONAL</div>
+				</div>
+			</div>
+			<div><button class="btn btn-primary" ng-click="test()" ng-disabled="testing.secsLeft == 0 || inputs.authorization===null || testing.running">Test</button></div>
+			<div ng-show="testing.running">Running Test....</div>
+			<div ng-show="testing.called && !testing.running">
+				<div>
+					<div>
+						<span ng-show="testing.success" class="green">SUCCESS:</span>
+						<span ng-hide="testing.success" class="red">FAIL:</span>
+						{{testing.time}} ms
+					</div>
+					<pre ng-bind-html="testing.response"></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
